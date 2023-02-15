@@ -24,3 +24,21 @@ Ticket.prototype.calculatePrice = function() {
 
   return price;
 };
+
+//UI Logic
+
+const ticketForm = document.getElementById('ticket-form');
+const priceContainer = document.getElementById('price-container');
+
+ticketForm.addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  const movieName = document.getElementById('movie-name').value;
+  const timeOfDay = document.getElementById('time-of-day').value;
+  const age = document.getElementById('age').value;
+
+  const ticket = new Ticket(movieName, timeOfDay, age);
+  const price = ticket.calculatePrice();
+
+  priceContainer.innerHTML = `Ticket Price: $${price.toFixed(2)}`;
+});
